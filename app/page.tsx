@@ -69,7 +69,7 @@ export default function Home() {
 
           
           {/* Left */}
-<div className="-mt-70">
+<div className="md:-mt-16">
 
             <motion.div
   initial={{ opacity: 0, scale: 0.9 }}
