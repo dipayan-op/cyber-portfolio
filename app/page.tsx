@@ -92,18 +92,7 @@ export default function Home() {
 
 </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-5 py-2 text-sm text-neutral-300 backdrop-blur-xl"
-            >
 
-              <div className="h-2 w-2 rounded-full bg-blue-400" />
-
-              Open to Internships & Freelance work
-
-            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -117,6 +106,19 @@ export default function Home() {
               Ghosh
 
             </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-5 py-2 text-sm text-neutral-300 backdrop-blur-xl"
+            >
+
+              <div className="h-2 w-2 rounded-full bg-blue-400" />
+
+              Open to Internships & Freelance work
+
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
