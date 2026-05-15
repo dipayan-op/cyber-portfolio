@@ -631,7 +631,7 @@ export default function Home() {
         <p className="mt-8 max-w-xl text-lg leading-9 text-neutral-500">
 
           Open to cybersecurity internships,
-          networking opportunities, collaborations,
+          freelance works, collaborations,
           and security-focused projects.
 
         </p>
