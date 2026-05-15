@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import React from "react";
+
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,26 +13,7 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 0.5,
-      smoothWheel: true,
-    });
-
-    let rafId: number;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-
-    rafId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-    };
-  }, []);
+ 
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#030712] text-white">
@@ -40,16 +21,16 @@ export default function Home() {
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
-        <div className="absolute left-[10%] top-[10%] h-[500px] w-[500px] rounded-full bg-blue-500/[0.08] blur-3xl" />
+        <div className="absolute left-[10%] top-[10%] h-[500px] w-[500px] rounded-full bg-blue-500/[0.08] blur-2xl" />
 
-        <div className="absolute bottom-[-10%] right-[0%] h-[450px] w-[450px] rounded-full bg-cyan-400/[0.05] blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[0%] h-[450px] w-[450px] rounded-full bg-cyan-400/[0.05] blur-2xl" />
 
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#3b82f633_1px,transparent_1px),linear-gradient(to_bottom,#3b82f633_1px,transparent_1px)] bg-[size:72px_72px]" />
 
       </div>
 
       {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full border-b border-white/[0.04] bg-black/20 backdrop-blur-2xl">
+      <nav className="fixed top-0 z-50 w-full border-b border-white/[0.04] bg-black/20 backdrop-blur-md">
 
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
 
@@ -188,7 +169,7 @@ export default function Home() {
             className="relative"
           >
 
-            <div className="rounded-[36px] border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl lg:p-10">
+            <div className="rounded-[36px] border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-md lg:p-10">
 
               <div className="mb-10 flex items-center justify-between">
 
@@ -377,7 +358,7 @@ export default function Home() {
       {/* Linux */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -402,7 +383,7 @@ export default function Home() {
       {/* OSINT */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -427,7 +408,7 @@ export default function Home() {
       {/* Networking */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -454,7 +435,7 @@ export default function Home() {
       {/* Vulnerability Scanning */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -479,7 +460,7 @@ export default function Home() {
       {/* Penetration Testing */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -532,7 +513,7 @@ export default function Home() {
         href="https://github.com/dipayan-op/nmap-attack-surface-analysis"
         target="_blank"
         whileHover={{ y: -6 }}
-        className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="relative h-72 overflow-hidden">
@@ -577,7 +558,7 @@ export default function Home() {
         href="https://github.com/dipayan-op/metasploitable-attack-surface-analysis"
         target="_blank"
         whileHover={{ y: -6 }}
-        className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-2xl transition hover:border-blue-400/20"
+        className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="relative h-72 overflow-hidden">
@@ -628,7 +609,7 @@ export default function Home() {
   className="relative z-10 px-6 py-36 lg:px-10"
 >
 
-  <div className="mx-auto max-w-7xl rounded-[40px] border border-white/[0.06] bg-white/[0.03] p-10 backdrop-blur-2xl md:p-16 lg:p-20">
+  <div className="mx-auto max-w-7xl rounded-[40px] border border-white/[0.06] bg-white/[0.03] p-10 backdrop-blur-md md:p-16 lg:p-20">
 
     <div className="grid gap-20 lg:grid-cols-2">
 
