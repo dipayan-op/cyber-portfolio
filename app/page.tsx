@@ -32,7 +32,7 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 z-50 w-full border-b border-white/[0.04] bg-black/20 backdrop-blur-md">
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6 md:py-5 lg:px-10">
 
           <div className="text-[13px] font-medium uppercase tracking-[0.22em] text-blue-400">
             Dipayan
@@ -78,7 +78,7 @@ export default function Home() {
   className="mb-10"
 >
 
-  <div className="relative h-36 w-36 overflow-hidden rounded-full border border-blue-400/20 bg-white/[0.03] p-1 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
+  <div className="relative h-28 w-28 md:h-36 md:w-36 overflow-hidden rounded-full border border-blue-400/20 bg-white/[0.03] p-1 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
 
     <img
       src="/profile.jpg"
@@ -98,7 +98,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.9 }}
-              className="max-w-5xl text-[3.8rem] font-black leading-[0.92] tracking-[-0.07em] md:text-[5.8rem] lg:text-[7rem]"
+              className="max-w-5xl text-[2.8rem] font-black leading-[0.95] tracking-[-0.06em] sm:text-[3.6rem] md:text-[5rem] lg:text-[7rem]"
             >
 
               Dipayan
@@ -136,7 +136,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="mt-14 flex flex-wrap items-center gap-5"
+              className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
             >
 
               <a
@@ -171,7 +171,7 @@ export default function Home() {
             className="relative"
           >
 
-            <div className="rounded-[36px] border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-md lg:p-10">
+            <div className="rounded-[36px] border border-white/[0.08] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md lg:p-10">
 
               <div className="mb-10 flex items-center justify-between">
 
@@ -295,7 +295,7 @@ export default function Home() {
       {/* About */}
       <section
         id="about"
-        className="relative z-10 px-6 py-36 lg:px-10"
+        className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
       >
 
         <div className="mx-auto grid max-w-7xl gap-20 lg:grid-cols-2">
@@ -334,7 +334,7 @@ export default function Home() {
 {/* Skills Section */}
 <section
   id="skills"
-  className="relative z-10 px-6 py-36 lg:px-10"
+  className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
 >
 
   <div className="mx-auto max-w-7xl">
@@ -355,12 +355,12 @@ export default function Home() {
     </div>
 
     {/* Grid */}
-    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-6 md:p-8 md:grid-cols-2 xl:grid-cols-3">
 
       {/* Linux */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -369,7 +369,7 @@ export default function Home() {
 
         </div>
 
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-lg md:text-2xl font-semibold">
           Linux
         </h3>
 
@@ -385,7 +385,7 @@ export default function Home() {
       {/* OSINT */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -394,7 +394,7 @@ export default function Home() {
 
         </div>
 
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-lg md:text-2xl font-semibold">
           OSINT
         </h3>
 
@@ -410,7 +410,7 @@ export default function Home() {
       {/* Networking */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -419,7 +419,7 @@ export default function Home() {
 
         </div>
 
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-lg md:text-2xl font-semibold">
           Networking
         </h3>
 
@@ -437,7 +437,7 @@ export default function Home() {
       {/* Vulnerability Scanning */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -446,7 +446,7 @@ export default function Home() {
 
         </div>
 
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-lg md:text-2xl font-semibold">
           Vulnerability Scanning
         </h3>
 
@@ -462,7 +462,7 @@ export default function Home() {
       {/* Penetration Testing */}
       <motion.div
         whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-blue-400/20"
+        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
       >
 
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
@@ -471,7 +471,7 @@ export default function Home() {
 
         </div>
 
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-lg md:text-2xl font-semibold">
           Penetration Testing
         </h3>
 
@@ -493,7 +493,7 @@ export default function Home() {
 {/* Projects */}
 <section
   id="projects"
-  className="relative z-10 px-6 py-36 lg:px-10"
+  className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
 >
 
   <div className="mx-auto max-w-7xl">
@@ -508,7 +508,7 @@ export default function Home() {
 
     </h2>
 
-    <div className="mt-24 grid gap-8 lg:grid-cols-2">
+    <div className="mt-24 grid gap-6 md:p-8 lg:grid-cols-2">
 
       {/* Project 1 */}
       <motion.a
@@ -518,7 +518,7 @@ export default function Home() {
         className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-md transition hover:border-blue-400/20"
       >
 
-        <div className="relative h-72 overflow-hidden">
+        <div className="relative h-56 md:h-72 overflow-hidden">
 
           <img
             src="/github-bg.jpg"
@@ -536,7 +536,7 @@ export default function Home() {
 
         </div>
 
-        <div className="p-8 lg:p-10">
+        <div className="p-6 md:p-8 lg:p-10">
 
           <h3 className="text-3xl font-semibold tracking-[-0.04em] transition group-hover:text-blue-300">
 
@@ -563,7 +563,7 @@ export default function Home() {
         className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-md transition hover:border-blue-400/20"
       >
 
-        <div className="relative h-72 overflow-hidden">
+        <div className="relative h-56 md:h-72 overflow-hidden">
 
           <img
             src="/github-bg.jpg"
@@ -581,7 +581,7 @@ export default function Home() {
 
         </div>
 
-        <div className="p-8 lg:p-10">
+        <div className="p-6 md:p-8 lg:p-10">
 
           <h3 className="text-3xl font-semibold tracking-[-0.04em] transition group-hover:text-blue-300">
 
@@ -608,7 +608,7 @@ export default function Home() {
 {/* Contact */}
 <section
   id="contact"
-  className="relative z-10 px-6 py-36 lg:px-10"
+  className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
 >
 
   <div className="mx-auto max-w-7xl rounded-[40px] border border-white/[0.06] bg-white/[0.03] p-10 backdrop-blur-md md:p-16 lg:p-20">
@@ -650,7 +650,7 @@ export default function Home() {
 
           <a
             href="tel:+918910448490"
-            className="mt-3 block text-2xl font-semibold transition hover:text-blue-400"
+            className="mt-3 block text-lg md:text-2xl font-semibold transition hover:text-blue-400"
           >
             +91 8910448490
           </a>
@@ -666,7 +666,7 @@ export default function Home() {
 
           <a
             href="mailto:dipayangta8900@gmail.com"
-            className="mt-3 block text-2xl font-semibold break-all transition hover:text-blue-400"
+            className="mt-3 block text-lg md:text-2xl font-semibold break-all transition hover:text-blue-400"
           >
             dipayangta8900@gmail.com
           </a>
@@ -683,7 +683,7 @@ export default function Home() {
           <a
             href="https://www.linkedin.com/in/dipayan-ghosh-cys0709/"
             target="_blank"
-            className="mt-3 block text-2xl font-semibold transition hover:text-blue-400"
+            className="mt-3 block text-lg md:text-2xl font-semibold transition hover:text-blue-400"
           >
             View Profile
           </a>
