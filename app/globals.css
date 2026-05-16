@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020817;
-  --foreground: #ffffff;
+  --background: #030712;
+  --foreground: #dbeafe;
+  --blue: #3b82f6;
 }
 
 html {
@@ -10,15 +11,203 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: #030712;
+  color: #dbeafe;
   overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
+/* Universal */
 * {
   box-sizing: border-box;
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(59,130,246,0.25);
+}
+
+/* Premium Animated Cyber Grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  animation: cyberGridMove 14s linear infinite;
+
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Floating Blue Glow */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+
+  background:
+    radial-gradient(circle at center,
+      rgba(59,130,246,0.10),
+      transparent 40%);
+
+  animation: cyberGlowMove 10s ease-in-out infinite alternate;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Grid Animation */
+@keyframes cyberGridMove {
+
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(60px);
+  }
+}
+
+/* Glow Animation */
+@keyframes cyberGlowMove {
+
+  0% {
+    transform: translate(-5%, -5%);
+  }
+
+  100% {
+    transform: translate(5%, 5%);
+  }
+}
+
+/* Premium Glow */
+.cyber-glow {
+  box-shadow:
+    0 0 12px rgba(59,130,246,0.25),
+    0 0 40px rgba(59,130,246,0.12);
+}
+
+/* Premium Glass Panel */
+.ctos-panel {
+  border: 1px solid rgba(59,130,246,0.14);
+  background: rgba(15,23,42,0.78);
+  backdrop-filter: blur(14px);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59,130,246,0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59,130,246,0.55);
+}
+/* Add this at the END of globals.css */
+
+/* Mobile Optimization */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+
+  h1,
+  h2,
+  h3 {
+    word-break: break-word;
+    line-height: 1.1;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+}
+
+/* Responsive Sections */
+@media (max-width: 768px) {
+
+  section {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+}
+
+/* Mobile Hero Fix */
+@media (max-width: 1024px) {
+
+  .hero-grid {
+    gap: 2.5rem !important;
+  }
+
+}
+
+/* Mobile Buttons */
+@media (max-width: 640px) {
+
+  .hero-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+
+/* Mobile Project Cards */
+@media (max-width: 640px) {
+
+  .project-image {
+    height: 220px !important;
+  }
+
+}
+
+/* Mobile Contact Cards */
+@media (max-width: 640px) {
+
+  .contact-card h3 {
+    font-size: 1.1rem !important;
+  }
+
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.02) 2px,
+    rgba(255,255,255,0.02) 4px
+  );
+  pointer-events: none;
+  z-index: 999;
 }

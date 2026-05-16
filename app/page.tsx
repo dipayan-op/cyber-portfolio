@@ -1,702 +1,532 @@
+
 "use client";
 
-import React from "react";
-
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Shield,
-  Terminal,
-  Network,
-  Eye,
-  Target,
-} from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
- 
+  const [utc, setUtc] = useState("00:00:00 UTC");
+
+  useEffect(() => {
+
+  const updateClock = () => {
+
+    const now = new Date();
+
+    const ist = new Date(
+      now.toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+      })
+    );
+
+    const h = String(ist.getHours()).padStart(2, "0");
+    const m = String(ist.getMinutes()).padStart(2, "0");
+    const s = String(ist.getSeconds()).padStart(2, "0");
+
+    setUtc(`${h}:${m}:${s} IST`);
+
+  };
+
+  updateClock();
+
+  const interval = setInterval(updateClock, 1000);
+
+  return () => {
+  clearInterval(interval);
+  observer.disconnect();
+};
+
+  // Scroll Reveal
+
+const observer = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal-visible");
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.08,
+  }
+);
+
+document.querySelectorAll(".reveal").forEach((el) => {
+  observer.observe(el);
+});
+
+}, []);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#030712] text-white">
+    <main className="bg-[#050505] text-[#e0e0e0] overflow-x-hidden">
+      {/* NAV */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex h-14 items-center justify-between border-b border-[#1e1e1e] bg-black/90 px-6 backdrop-blur-md md:px-10">
+        <a
+          href="#"
+          className="flex items-center gap-2 font-mono text-sm tracking-wider"
+        >
+          <span className="text-red-500">&gt;_</span>
+          DIPAYAN.SEC
+        </a>
 
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
-        <div className="absolute left-[10%] top-[10%] h-[500px] w-[500px] rounded-full bg-blue-500/[0.08] blur-2xl" />
-
-        <div className="absolute bottom-[-10%] right-[0%] h-[450px] w-[450px] rounded-full bg-cyan-400/[0.05] blur-2xl" />
-
-        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#3b82f633_1px,transparent_1px),linear-gradient(to_bottom,#3b82f633_1px,transparent_1px)] bg-[size:72px_72px]" />
-
-      </div>
-
-      {/* Navbar */}
-      <nav className="fixed top-0 z-50 w-full border-b border-white/[0.04] bg-black/20 backdrop-blur-md">
-
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6 md:py-5 lg:px-10">
-
-          <div className="text-[13px] font-medium uppercase tracking-[0.22em] text-blue-400">
-            Dipayan
-          </div>
-
-          <div className="hidden items-center gap-10 text-sm text-neutral-500 md:flex">
-
-            <a href="#about" className="transition hover:text-white">
-              About
-            </a>
-
-            <a href="#skills" className="transition hover:text-white">
-              Skills
-            </a>
-
-            <a href="#projects" className="transition hover:text-white">
-              Projects
-            </a>
-
-            <a href="#contact" className="transition hover:text-white">
-              Contact
-            </a>
-
-          </div>
-
+        <div className="hidden items-center gap-8 md:flex">
+          <a href="#about" className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition">
+            About
+          </a>
+          <a href="#skills" className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition">
+            Skills
+          </a>
+          <a href="#projects" className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition">
+            Projects
+          </a>
+          <a href="#contact" className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition">
+            Contact
+          </a>
         </div>
 
+        <div className="hidden items-center gap-3 font-mono text-xs text-zinc-500 md:flex">
+          <div className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e] animate-pulse" />
+          <span>ONLINE</span>
+          <span>|</span>
+          <span className="text-white">{utc}</span>
+        </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative z-10 flex min-h-screen items-center px-6 pt-32 lg:px-10">
+      {/* HERO */}
+      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-20 md:px-16">
+        {/* BACKGROUND */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(180,10,20,0.12),transparent_40%),radial-gradient(circle_at_20%_80%,rgba(120,0,0,0.08),transparent_30%)]" />
 
-        <div className="mx-auto grid w-full max-w-7xl gap-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        {/* GRID */}
+        <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-          
-          {/* Left */}
-<div className="md:-mt-16">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[420px_1fr]">
 
-            <motion.div
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8 }}
-  className="mb-10"
->
+  {/* LEFT SIDE */}
+  <div className="flex justify-center lg:justify-start">
 
-  <div className="relative h-28 w-28 md:h-36 md:w-36 overflow-hidden rounded-full border border-blue-400/20 bg-white/[0.03] p-1 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
+    <div className="relative overflow-hidden border border-[#1e1e1e] bg-[#0a0a0a] p-3 shadow-[0_0_50px_rgba(255,0,0,0.08)]">
 
-    <img
-      src="/profile.jpg"
-      alt="Dipayan Ghosh"
-      className="h-full w-full rounded-full object-cover"
-    />
+      {/* Red Accent */}
+      <div className="absolute left-0 top-0 h-20 w-[2px] bg-red-500" />
 
-    <div className="absolute inset-0 rounded-full border border-blue-400/10" />
+      {/* Profile Image */}
+      <img
+        src="/profile.jpg"
+        alt="Dipayan Ghosh"
+        className="h-[520px] w-[340px] object-cover grayscale contrast-125"
+      />
 
-  </div>
+      {/* Bottom HUD */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1e1e1e] bg-black/80 px-5 py-4 backdrop-blur-md">
 
-</motion.div>
-
-
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.9 }}
-              className="max-w-5xl text-[2.8rem] font-black leading-[0.95] tracking-[-0.06em] sm:text-[3.6rem] md:text-[5rem] lg:text-[7rem]"
-            >
-
-              Dipayan
-              <br />
-              Ghosh
-
-            </motion.h1>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-5 py-2 text-sm text-neutral-300 backdrop-blur-xl"
-            >
-
-              <div className="h-2 w-2 rounded-full bg-blue-400" />
-
-              Open to Internships & Freelance work
-
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="mt-10 max-w-2xl text-lg leading-9 text-neutral-500 md:text-xl"
-            >
-
-              Aspiring cybersecurity analyst focused on Linux,
-              networking, ethical hacking, OSINT, and modern digital security.
-
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
-            >
-
-              <a
-                href="#projects"
-                className="group inline-flex items-center gap-2 rounded-full bg-blue-400 px-8 py-4 text-sm font-semibold text-black transition hover:bg-blue-300"
-              >
-
-                View Projects
-
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-
-              </a>
-
-              <a
-                href="#contact"
-                className="rounded-full border border-white/[0.08] bg-white/[0.03] px-8 py-4 text-sm font-medium text-white backdrop-blur-xl transition hover:border-blue-400/20 hover:bg-white/[0.05]"
-              >
-
-                Contact Me
-
-              </a>
-
-            </motion.div>
-
-          </div>
-
-          {/* Right Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.25, duration: 0.9 }}
-            className="relative"
-          >
-
-            <div className="rounded-[36px] border border-white/[0.08] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md lg:p-10">
-
-              <div className="mb-10 flex items-center justify-between">
-
-                <div>
-
-                  <p className="text-sm text-neutral-500">
-                    Current Focus
-                  </p>
-
-                  <h3 className="mt-2 text-3xl font-semibold tracking-[-0.04em]">
-                    Security & Infrastructure
-                  </h3>
-
-                </div>
-
-                <div className="rounded-2xl border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-sm text-blue-300">
-                  Active
-                </div>
-
-              </div>
-
-              <div className="space-y-5">
-
-                <div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6 transition hover:border-blue-400/15">
-
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-                    <Shield className="h-5 w-5" />
-
-                  </div>
-
-                  <h4 className="text-xl font-semibold">
-                    Cybersecurity
-                  </h4>
-
-                  <p className="mt-4 leading-8 text-neutral-500">
-
-                    Security fundamentals, reconnaissance,
-                    vulnerability analysis, and ethical hacking.
-
-                  </p>
-
-                </div>
-
-<div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6 transition hover:border-blue-400/15">
-
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-                    <Eye className="h-5 w-5" />
-
-                  </div>
-
-                  <h4 className="text-xl font-semibold">
-                    OSINT
-                  </h4>
-
-                  <p className="mt-4 leading-8 text-neutral-500">
-
-                    Open-source intelligence gathering,
-                    reconnaissance, digital footprint analysis,
-                    and information discovery.
-
-                  </p>
-
-                </div>
-
-                <div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6 transition hover:border-blue-400/15">
-
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-                    <Terminal className="h-5 w-5" />
-
-                  </div>
-
-                  <h4 className="text-xl font-semibold">
-                    Linux
-                  </h4>
-
-                  <p className="mt-4 leading-8 text-neutral-500">
-
-                    Linux command line, workflows,
-                    server operations, and terminal environments.
-
-                  </p>
-
-                </div>
-
-                <div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6 transition hover:border-blue-400/15">
-
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-                    <Network className="h-5 w-5" />
-
-                  </div>
-
-                  <h4 className="text-xl font-semibold">
-                    Networking
-                  </h4>
-
-                  <p className="mt-4 leading-8 text-neutral-500">
-
-                    TCP/IP, routing, protocols,
-                    packet flow, and troubleshooting.
-
-                  </p>
-
-                </div>
-
-                
-
-              </div>
-
-            </div>
-
-          </motion.div>
-
+        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-red-500">
+          Identity
         </div>
 
-      </section>
-
-      {/* About */}
-      <section
-        id="about"
-        className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
-      >
-
-        <div className="mx-auto grid max-w-7xl gap-20 lg:grid-cols-2">
-
-          <div>
-
-            <p className="mb-6 text-sm uppercase tracking-[0.2em] text-blue-400">
-              About
-            </p>
-
-            <h2 className="max-w-xl text-5xl font-bold leading-[1.05] tracking-[-0.06em] md:text-6xl">
-
-              Building practical cybersecurity skills.
-
-            </h2>
-
-          </div>
-
-          <div>
-
-            <p className="text-lg leading-10 text-neutral-500 md:text-xl">
-
-              I am focused on learning cybersecurity through hands-on
-              practice, Linux systems, networking concepts, ethical
-              hacking methodologies, and OSINT workflows while building
-              modern security-focused projects.
-
-            </p>
-
-          </div>
-
+        <div className="mt-2 text-lg font-bold uppercase tracking-wide text-white">
+          Dipayan Ghosh
         </div>
 
-      </section>
-
-{/* Skills Section */}
-<section
-  id="skills"
-  className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
->
-
-  <div className="mx-auto max-w-7xl">
-
-    {/* Heading */}
-    <div className="mb-20">
-
-      <p className="mb-6 text-sm uppercase tracking-[0.2em] text-blue-400">
-        Skills
-      </p>
-
-      <h2 className="max-w-4xl text-5xl font-bold tracking-[-0.06em] md:text-6xl">
-
-        Technical expertise & security domains.
-
-      </h2>
-
-    </div>
-
-    {/* Grid */}
-    <div className="grid gap-6 md:p-8 md:grid-cols-2 xl:grid-cols-3">
-
-      {/* Linux */}
-      <motion.div
-        whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
-      >
-
-        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-          <Terminal className="h-6 w-6" />
-
+        <div className="mt-1 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">
+          Cyber Security • OSINT • Pentesting
         </div>
 
-        <h3 className="text-lg md:text-2xl font-semibold">
-          Linux
-        </h3>
-
-        <p className="mt-5 leading-8 text-neutral-500">
-
-          Linux command line, server workflows,
-          package management, and terminal operations.
-
-        </p>
-
-      </motion.div>
-
-      {/* OSINT */}
-      <motion.div
-        whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
-      >
-
-        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-          <Eye className="h-6 w-6" />
-
-        </div>
-
-        <h3 className="text-lg md:text-2xl font-semibold">
-          OSINT
-        </h3>
-
-        <p className="mt-5 leading-8 text-neutral-500">
-
-          Open-source intelligence gathering,
-          reconnaissance, and digital footprint analysis.
-
-        </p>
-
-      </motion.div>
-
-      {/* Networking */}
-      <motion.div
-        whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
-      >
-
-        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-          <Network className="h-6 w-6" />
-
-        </div>
-
-        <h3 className="text-lg md:text-2xl font-semibold">
-          Networking
-        </h3>
-
-        <p className="mt-5 leading-8 text-neutral-500">
-
-          TCP/IP, routing, protocols,
-          packet flow, and troubleshooting fundamentals.
-
-        </p>
-
-      </motion.div>
-
-      
-
-      {/* Vulnerability Scanning */}
-      <motion.div
-        whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
-      >
-
-        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-          <Shield className="h-6 w-6" />
-
-        </div>
-
-        <h3 className="text-lg md:text-2xl font-semibold">
-          Vulnerability Scanning
-        </h3>
-
-        <p className="mt-5 leading-8 text-neutral-500">
-
-          Reconnaissance, service enumeration,
-          attack surface analysis, and vulnerability assessment.
-
-        </p>
-
-      </motion.div>
-
-      {/* Penetration Testing */}
-      <motion.div
-        whileHover={{ y: -6 }}
-        className="rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 backdrop-blur-md transition hover:border-blue-400/20"
-      >
-
-        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-400/10 text-blue-400">
-
-          <Target className="h-6 w-6" />
-
-        </div>
-
-        <h3 className="text-lg md:text-2xl font-semibold">
-          Penetration Testing
-        </h3>
-
-        <p className="mt-5 leading-8 text-neutral-500">
-
-          Ethical hacking methodologies,
-          exploitation concepts, and security testing workflows.
-
-        </p>
-
-      </motion.div>
+      </div>
 
     </div>
 
   </div>
 
-</section>
+  {/* RIGHT SIDE */}
+  <div>
 
-{/* Projects */}
-<section
-  id="projects"
-  className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
->
+    <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-red-500">
 
-  <div className="mx-auto max-w-7xl">
+      <div className="h-2 w-2 bg-red-500" />
 
-    <p className="mb-6 text-sm uppercase tracking-[0.2em] text-blue-400">
-      Projects
+      // CYBER SECURITY SPECIALIST
+
+    </div>
+
+    <h1 className="max-w-5xl font-black uppercase leading-[0.9] tracking-tight text-white text-4xl sm:text-5xl md:text-6xl lg:text-[7rem]">
+
+  <span className="block">BREACHING</span>
+
+  <span className="block text-red-500">
+    THE NOISE,
+  </span>
+
+  <span className="block">
+    REVEALING
+  </span>
+
+  <span className="block text-red-500">
+  THE DATA.
+</span>
+
+</h1>
+
+    <div className="mt-10 font-mono text-sm uppercase tracking-[0.25em] text-red-500">
+
+      &gt; ./MISSION.SH
+
+    </div>
+
+    <p className="mt-4 max-w-3xl font-mono text-lg leading-10 tracking-[0.08em] text-zinc-300 md:text-2xl">
+
+      Breaching The Noise, Revealing The Data.
+
     </p>
 
-    <h2 className="max-w-4xl text-5xl font-bold tracking-[-0.06em] md:text-6xl">
+    <div className="mt-10 flex flex-col gap-4 sm:flex-row">
 
-      Security research & attack surface analysis.
-
-    </h2>
-
-    <div className="mt-24 grid gap-6 md:p-8 lg:grid-cols-2">
-
-      {/* Project 1 */}
-      <motion.a
-        href="https://github.com/dipayan-op/nmap-attack-surface-analysis"
-        target="_blank"
-        whileHover={{ y: -6 }}
-        className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-md transition hover:border-blue-400/20"
+      <a
+        href="#contact"
+        className="bg-red-600 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition hover:-translate-y-1 hover:bg-red-500"
       >
+        INITIATE CONTACT
+      </a>
 
-        <div className="relative h-56 md:h-72 overflow-hidden">
-
-          <img
-            src="/github-bg.jpg"
-            alt="GitHub Background"
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/30 to-transparent" />
-
-          <div className="absolute inset-0 bg-blue-500/10" />
-
-          <div className="absolute bottom-6 left-6 rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-sm text-blue-300 backdrop-blur-xl">
-            Nmap Analysis
-          </div>
-
-        </div>
-
-        <div className="p-6 md:p-8 lg:p-10">
-
-          <h3 className="text-3xl font-semibold tracking-[-0.04em] transition group-hover:text-blue-300">
-
-            Nmap Attack Surface Analysis
-
-          </h3>
-
-          <p className="mt-5 leading-8 text-neutral-500">
-
-            Attack surface analysis project using Nmap for reconnaissance,
-            port discovery, service enumeration, and vulnerability assessment workflows.
-
-          </p>
-
-        </div>
-
-      </motion.a>
-
-      {/* Project 2 */}
-      <motion.a
-        href="https://github.com/dipayan-op/metasploitable-attack-surface-analysis"
-        target="_blank"
-        whileHover={{ y: -6 }}
-        className="group overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] backdrop-blur-md transition hover:border-blue-400/20"
+      <a
+        href="#projects"
+        className="border border-zinc-700 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:-translate-y-1 hover:border-red-500 hover:text-red-500"
       >
-
-        <div className="relative h-56 md:h-72 overflow-hidden">
-
-          <img
-            src="/github-bg.jpg"
-            alt="GitHub Background"
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/30 to-transparent" />
-
-          <div className="absolute inset-0 bg-blue-500/10" />
-
-          <div className="absolute bottom-6 left-6 rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-sm text-blue-300 backdrop-blur-xl">
-            Metasploitable
-          </div>
-
-        </div>
-
-        <div className="p-6 md:p-8 lg:p-10">
-
-          <h3 className="text-3xl font-semibold tracking-[-0.04em] transition group-hover:text-blue-300">
-
-            Metasploitable Attack Surface Analysis
-
-          </h3>
-
-          <p className="mt-5 leading-8 text-neutral-500">
-
-            Vulnerability assessment and attack surface analysis performed
-            on Metasploitable environments using penetration testing workflows.
-
-          </p>
-
-        </div>
-
-      </motion.a>
+        VIEW PROJECTS
+      </a>
 
     </div>
 
   </div>
 
-</section>
-{/* Contact */}
-<section
-  id="contact"
-  className="relative z-10 px-6 py-24 md:py-36 lg:px-10"
->
+</div>
 
-  <div className="mx-auto max-w-7xl rounded-[40px] border border-white/[0.06] bg-white/[0.03] p-10 backdrop-blur-md md:p-16 lg:p-20">
+        {/* STATS */}
+        <div className="absolute bottom-0 left-0 right-0 grid grid-cols-1 border-t border-[#1e1e1e] bg-black/70 backdrop-blur-md sm:grid-cols-3">
+          {[
+  ["STATUS", "Available"],
+  ["SPECIALTY", "OSINT / Pentest"],
+  ["LOC", "Kolkata, IN"],
+].map(([label, value], i) => (
+            <div key={i} className="flex flex-col items-center justify-center border-r border-[#1e1e1e] p-5 text-center last:border-r-0">
+              <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-red-500">
+                {label}
+              </div>
+              <div className="text-sm font-semibold text-white md:text-base">
+                {value}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-    <div className="grid gap-20 lg:grid-cols-2">
+      {/* ABOUT */}
+      <section id="about" className="mx-auto max-w-6xl px-6 py-24 md:px-16">
+        <div className="mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+          // ABOUT
+          <div className="h-px flex-1 bg-[#1e1e1e]" />
+        </div>
 
-      {/* Left */}
-      <div>
-
-        <p className="mb-6 text-sm uppercase tracking-[0.2em] text-blue-400">
-          Contact
-        </p>
-
-        <h2 className="max-w-2xl text-5xl font-bold leading-[1.05] tracking-[-0.06em] md:text-6xl">
-
-          Let’s connect.
-
+        <h2 className="mb-8 text-5xl font-black uppercase text-white md:text-7xl">
+          PROFILE
         </h2>
 
-        <p className="mt-8 max-w-xl text-lg leading-9 text-neutral-500">
+        <p className="max-w-3xl font-mono text-sm leading-9 text-zinc-400 md:text-base">
+          Cybersecurity specialist focused on offensive security, reconnaissance,
+          vulnerability assessment, and digital intelligence. I analyze attack
+          surfaces, identify weaknesses, and build security awareness through
+          OSINT and penetration testing workflows.
+        </p>
+      </section>
 
-          Open to cybersecurity internships,
-          freelance works, collaborations,
-          and security-focused projects.
+      {/* SKILLS */}
+      <section id="skills" className="bg-[#111111] py-24">
+        <div className="mx-auto max-w-6xl px-6 md:px-16">
+          <div className="mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+            // SKILLS
+            <div className="h-px flex-1 bg-[#1e1e1e]" />
+          </div>
+
+          <h2 className="mb-12 text-5xl font-black uppercase text-white md:text-7xl">
+            CAPABILITIES
+          </h2>
+
+          <div className="grid gap-px border border-[#1e1e1e] bg-[#1e1e1e] md:grid-cols-2 lg:grid-cols-3">
+            {[
+              ["[01]", "Linux", "Advanced Linux operations and security workflows."],
+              ["[02]", "OSINT", "Digital reconnaissance and intelligence gathering."],
+              ["[03]", "Networking", "Protocols, routing, packet analysis and TCP/IP."],
+              ["[04]", "Pentesting", "Web and network penetration testing methodologies."],
+              ["[05]", "Vulnerability Scanning", "Reconnaissance and attack surface analysis."],
+              ["[06]", "Cybersecurity", "Security monitoring and digital defense."],
+            ].map(([num, title, desc], i) => (
+              <div
+                key={i}
+                className="group bg-[#111111] p-8 transition hover:bg-[#151515]"
+              >
+                <div className="mb-5 font-mono text-2xl text-red-500">
+                  {num}
+                </div>
+
+                <h3 className="mb-3 text-xl font-bold uppercase tracking-wide text-white">
+                  {title}
+                </h3>
+
+                <p className="font-mono text-sm leading-8 text-zinc-500">
+                  {desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+<section id="projects" className="mx-auto max-w-7xl px-6 py-24 md:px-16">
+
+  <div className="mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+
+    // ENGAGEMENTS
+
+    <div className="h-px flex-1 bg-[#1e1e1e]" />
+
+  </div>
+
+  <h2 className="mb-16 text-5xl font-black uppercase text-white md:text-7xl">
+
+    PROJECTS
+
+  </h2>
+
+  <div className="grid gap-8 lg:grid-cols-2">
+
+    {/* Project 1 */}
+    <a
+      href="https://github.com/dipayan-op/nmap-attack-surface-analysis"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group overflow-hidden border border-[#1e1e1e] bg-[#0a0a0a] transition duration-300 hover:border-red-500"
+    >
+
+      {/* Image */}
+      <div className="relative overflow-hidden">
+
+        <img
+          src="/github-bg.jpg"
+          alt="Nmap Analysis"
+          className="h-[260px] w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+        <div className="absolute bottom-5 left-5 border border-red-900 bg-black/70 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500 backdrop-blur-md">
+
+          Nmap Analysis
+
+        </div>
+
+      </div>
+
+      {/* Content */}
+      <div className="p-8">
+
+        <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
+
+          ENG-001
+
+        </div>
+
+        <h3 className="text-4xl font-black uppercase text-white">
+
+          Attack Surface Analysis
+
+        </h3>
+
+        <p className="mt-6 font-mono text-sm leading-8 text-zinc-500">
+
+          Reconnaissance and vulnerability analysis project using Nmap
+          for port discovery, service enumeration, and attack surface mapping.
 
         </p>
 
-      </div>
+        <div className="mt-6 flex flex-wrap gap-3">
 
-      {/* Right */}
-      <div className="space-y-8">
+          <span className="border border-red-900 bg-red-950/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500">
+            Nmap
+          </span>
 
-        {/* Phone */}
-        <div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6">
+          <span className="border border-red-900 bg-red-950/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500">
+            Recon
+          </span>
 
-          <p className="text-sm uppercase tracking-[0.2em] text-blue-400">
-            Mobile
-          </p>
-
-          <a
-            href="tel:+918910448490"
-            className="mt-3 block text-lg md:text-2xl font-semibold transition hover:text-blue-400"
-          >
-            +91 8910448490
-          </a>
-
-        </div>
-
-        {/* Gmail */}
-        <div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6">
-
-          <p className="text-sm uppercase tracking-[0.2em] text-blue-400">
-            Gmail
-          </p>
-
-          <a
-            href="mailto:dipayangta8900@gmail.com"
-            className="mt-3 block text-lg md:text-2xl font-semibold break-all transition hover:text-blue-400"
-          >
-            dipayangta8900@gmail.com
-          </a>
-
-        </div>
-
-        {/* LinkedIn */}
-        <div className="rounded-[28px] border border-white/[0.06] bg-black/20 p-6">
-
-          <p className="text-sm uppercase tracking-[0.2em] text-blue-400">
-            LinkedIn
-          </p>
-
-          <a
-            href="https://www.linkedin.com/in/dipayan-ghosh-cys0709/"
-            target="_blank"
-            className="mt-3 block text-lg md:text-2xl font-semibold transition hover:text-blue-400"
-          >
-            View Profile
-          </a>
+          <span className="border border-red-900 bg-red-950/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500">
+            Security
+          </span>
 
         </div>
 
       </div>
 
-    </div>
+    </a>
+
+    {/* Project 2 */}
+    <a
+      href="https://github.com/dipayan-op/metasploitable-attack-surface-analysis"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group overflow-hidden border border-[#1e1e1e] bg-[#0a0a0a] transition duration-300 hover:border-red-500"
+    >
+
+      {/* Image */}
+      <div className="relative overflow-hidden">
+
+        <img
+          src="/github-bg.jpg"
+          alt="Metasploitable"
+          className="h-[260px] w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+        <div className="absolute bottom-5 left-5 border border-red-900 bg-black/70 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500 backdrop-blur-md">
+
+          Metasploitable
+
+        </div>
+
+      </div>
+
+      {/* Content */}
+      <div className="p-8">
+
+        <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
+
+          ENG-002
+
+        </div>
+
+        <h3 className="text-4xl font-black uppercase text-white">
+
+          Vulnerability Assessment
+
+        </h3>
+
+        <p className="mt-6 font-mono text-sm leading-8 text-zinc-500">
+
+          Penetration testing workflow and vulnerability assessment
+          performed on Metasploitable environments.
+
+        </p>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+
+          <span className="border border-red-900 bg-red-950/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500">
+            Pentest
+          </span>
+
+          <span className="border border-red-900 bg-red-950/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500">
+            Exploitation
+          </span>
+
+          <span className="border border-red-900 bg-red-950/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-red-500">
+            Security
+          </span>
+
+        </div>
+
+      </div>
+
+    </a>
 
   </div>
 
 </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="bg-[#111111] py-24">
+        <div className="mx-auto max-w-6xl px-6 md:px-16">
+          <div className="mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+            // INITIATE
+            <div className="h-px flex-1 bg-[#1e1e1e]" />
+          </div>
+
+          <h2 className="mb-12 text-5xl font-black uppercase text-white md:text-7xl">
+            CONTACT
+          </h2>
+
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <p className="mb-10 font-mono text-sm leading-9 text-zinc-500">
+                Available for cybersecurity collaborations, penetration testing,
+                OSINT research, and vulnerability analysis.
+              </p>
+
+              <div className="flex flex-col gap-4">
+                <a
+                  href="mailto:dipayangta8900@gmail.com"
+                  className="border border-[#1e1e1e] p-4 font-mono text-sm text-zinc-300 transition hover:border-red-500 hover:text-red-500"
+                >
+                  [M] dipayangta8900@gmail.com
+                </a>
+
+                <a
+                  href="https://github.com/dipayan-op"
+                  target="_blank"
+                  className="border border-[#1e1e1e] p-4 font-mono text-sm text-zinc-300 transition hover:border-red-500 hover:text-red-500"
+                >
+                  [G] github.com/dipayan-op
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/dipayan-ghosh-cys0709/"
+                  target="_blank"
+                  className="border border-[#1e1e1e] p-4 font-mono text-sm text-zinc-300 transition hover:border-red-500 hover:text-red-500"
+                >
+                  [L] LinkedIn Profile
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-5">
+              <input
+                type="text"
+                placeholder="Your name"
+                className="border border-[#1e1e1e] bg-[#0a0a0a] px-5 py-4 font-mono text-sm outline-none transition focus:border-red-500"
+              />
+
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="border border-[#1e1e1e] bg-[#0a0a0a] px-5 py-4 font-mono text-sm outline-none transition focus:border-red-500"
+              />
+
+              <textarea
+                placeholder="Describe your mission..."
+                className="min-h-[160px] border border-[#1e1e1e] bg-[#0a0a0a] px-5 py-4 font-mono text-sm outline-none transition focus:border-red-500"
+              />
+
+              <button className="w-fit bg-red-600 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition hover:bg-red-500">
+                TRANSMIT
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="flex flex-col items-center justify-between gap-4 border-t border-[#1e1e1e] bg-black px-6 py-8 text-center md:flex-row md:px-16">
+        <p className="font-mono text-xs tracking-[0.2em] text-zinc-500">
+          &gt;_ DIPAYAN<span className="text-red-500">.SEC</span><span className="text-white-500"> All Rights Reserved</span>
+        </p>
+
+        <p className="font-mono text-xs tracking-[0.2em] text-zinc-500">
+          KOLKATA, IN // <span className="text-red-500">ONLINE</span>
+        </p>
+      </footer>
     </main>
   );
 }
+
