@@ -96,44 +96,143 @@ document.querySelectorAll(".reveal").forEach((el) => {
       </nav>
 
       {/* HERO */}
-      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pt-20 md:px-16">
-        {/* BACKGROUND */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(180,10,20,0.12),transparent_40%),radial-gradient(circle_at_20%_80%,rgba(120,0,0,0.08),transparent_30%)]" />
+<section className="relative flex min-h-screen items-center overflow-hidden px-5 pt-28 pb-24 md:px-16">
 
-        {/* GRID */}
-        <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
+  {/* Background */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(180,10,20,0.12),transparent_40%),radial-gradient(circle_at_20%_80%,rgba(120,0,0,0.08),transparent_30%)]" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[420px_1fr]">
+  {/* Grid */}
+  <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-  {/* LEFT SIDE */}
-  <div className="flex justify-center lg:justify-start">
+  <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-14 lg:grid-cols-[420px_1fr] lg:items-center">
 
-    <div className="relative overflow-hidden border border-[#1e1e1e] bg-[#0a0a0a] p-3 shadow-[0_0_50px_rgba(255,0,0,0.08)]">
+    {/* LEFT */}
+    <div className="flex justify-center lg:justify-start">
 
-      {/* Red Accent */}
-      <div className="absolute left-0 top-0 h-20 w-[2px] bg-red-500" />
+      <div className="relative overflow-hidden border border-[#1e1e1e] bg-[#0a0a0a] p-2 shadow-[0_0_50px_rgba(255,0,0,0.08)]">
 
-      {/* Profile Image */}
-      <img
-        src="/profile.jpg"
-        alt="Dipayan Ghosh"
-        className="h-[520px] w-[340px] object-cover grayscale contrast-125"
-      />
+        <img
+          src="/profile.jpg"
+          alt="Dipayan Ghosh"
+          className="h-[360px] w-[240px] object-cover grayscale contrast-125 sm:h-[420px] sm:w-[280px] md:h-[520px] md:w-[340px]"
+        />
 
-      {/* Bottom HUD */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1e1e1e] bg-black/80 px-5 py-4 backdrop-blur-md">
+        {/* HUD */}
+        <div className="absolute bottom-0 left-0 right-0 border-t border-[#1e1e1e] bg-black/80 px-4 py-4 backdrop-blur-md">
 
-        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-red-500">
-          Identity
+          <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-red-500">
+            Identity
+          </div>
+
+          <div className="mt-2 text-base font-bold uppercase tracking-wide text-white sm:text-lg">
+            Dipayan Ghosh
+          </div>
+
+          <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 sm:text-xs">
+            Cyber Security • OSINT • Pentesting
+          </div>
+
         </div>
 
-        <div className="mt-2 text-lg font-bold uppercase tracking-wide text-white">
-          Dipayan Ghosh
-        </div>
+      </div>
 
-        <div className="mt-1 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">
-          Cyber Security • OSINT • Pentesting
-        </div>
+    </div>
+
+    {/* RIGHT */}
+    <div className="text-center lg:text-left">
+
+      <div className="mb-5 flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-red-500 lg:justify-start">
+
+        <div className="h-2 w-2 bg-red-500" />
+
+        SYSTEM // CYBER SECURITY SPECIALIST
+
+      </div>
+
+      {/* BIG TITLE */}
+      <h1 className="font-black uppercase leading-[0.9] tracking-tight text-white text-4xl sm:text-5xl md:text-6xl lg:text-[7rem]">
+
+        <span className="block">
+          BREACHING
+        </span>
+
+        <span className="block text-red-500">
+          THE NOISE,
+        </span>
+
+        <span className="block">
+          REVEALING
+        </span>
+
+        <span className="block text-red-500">
+          THE DATA.
+        </span>
+
+      </h1>
+
+      {/* Mission */}
+      <div className="mt-8 font-mono text-xs uppercase tracking-[0.25em] text-red-500 sm:text-sm">
+
+        &gt; ./MISSION.SH
+
+      </div>
+
+      {/* Tagline */}
+      <p className="mx-auto mt-4 max-w-2xl font-mono text-base leading-8 tracking-[0.05em] text-zinc-300 sm:text-lg md:text-2xl md:leading-10 lg:mx-0">
+
+        Breaching The Noise,
+        Revealing The Data.
+
+      </p>
+
+      {/* Buttons */}
+      <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+
+        <a
+          href="#contact"
+          className="bg-red-600 px-8 py-4 text-center font-mono text-xs uppercase tracking-[0.2em] text-white transition hover:bg-red-500"
+        >
+          INITIATE CONTACT
+        </a>
+
+        <a
+          href="#projects"
+          className="border border-zinc-700 px-8 py-4 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:border-red-500 hover:text-red-500"
+        >
+          VIEW PROJECTS
+        </a>
+
+      </div>
+
+      {/* Stats */}
+      <div className="mt-14 grid gap-6 border-t border-[#1e1e1e] pt-8 sm:grid-cols-3">
+
+        {[
+          ["STATUS", "Available"],
+          ["SPECIALTY", "OSINT / Pentest"],
+          ["LOCALE", "Kolkata, IN"],
+        ].map(([label, value], i) => (
+
+          <div
+            key={i}
+            className="text-center lg:text-left"
+          >
+
+            <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-red-500">
+
+              {label}
+
+            </div>
+
+            <div className="text-sm font-semibold text-white sm:text-base">
+
+              {value}
+
+            </div>
+
+          </div>
+
+        ))}
 
       </div>
 
@@ -141,87 +240,7 @@ document.querySelectorAll(".reveal").forEach((el) => {
 
   </div>
 
-  {/* RIGHT SIDE */}
-  <div>
-
-    <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-red-500">
-
-      <div className="h-2 w-2 bg-red-500" />
-
-      // CYBER SECURITY SPECIALIST
-
-    </div>
-
-    <h1 className="max-w-5xl font-black uppercase leading-[0.9] tracking-tight text-white text-4xl sm:text-5xl md:text-6xl lg:text-[7rem]">
-
-  <span className="block">BREACHING</span>
-
-  <span className="block text-red-500">
-    THE NOISE,
-  </span>
-
-  <span className="block">
-    REVEALING
-  </span>
-
-  <span className="block text-red-500">
-  THE DATA.
-</span>
-
-</h1>
-
-    <div className="mt-10 font-mono text-sm uppercase tracking-[0.25em] text-red-500">
-
-      &gt; ./MISSION.SH
-
-    </div>
-
-    <p className="mt-4 max-w-3xl font-mono text-lg leading-10 tracking-[0.08em] text-zinc-300 md:text-2xl">
-
-      Breaching The Noise, Revealing The Data.
-
-    </p>
-
-    <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-
-      <a
-        href="#contact"
-        className="bg-red-600 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition hover:-translate-y-1 hover:bg-red-500"
-      >
-        INITIATE CONTACT
-      </a>
-
-      <a
-        href="#projects"
-        className="border border-zinc-700 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:-translate-y-1 hover:border-red-500 hover:text-red-500"
-      >
-        VIEW PROJECTS
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-        {/* STATS */}
-        <div className="absolute bottom-0 left-0 right-0 grid grid-cols-1 border-t border-[#1e1e1e] bg-black/70 backdrop-blur-md sm:grid-cols-3">
-          {[
-  ["STATUS", "Available"],
-  ["SPECIALTY", "OSINT / Pentest"],
-  ["LOC", "Kolkata, IN"],
-].map(([label, value], i) => (
-            <div key={i} className="flex flex-col items-center justify-center border-r border-[#1e1e1e] p-5 text-center last:border-r-0">
-              <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-red-500">
-                {label}
-              </div>
-              <div className="text-sm font-semibold text-white md:text-base">
-                {value}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+</section>
 
       {/* ABOUT */}
       <section id="about" className="mx-auto max-w-6xl px-6 py-24 md:px-16">
