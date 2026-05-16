@@ -6,7 +6,13 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [utc, setUtc] = useState("00:00:00 UTC");
 
+  const [typedText, setTypedText] = useState("");
+
   useEffect(() => {
+
+  // =========================
+  // IST CLOCK
+  // =========================
 
   const updateClock = () => {
 
@@ -28,37 +34,136 @@ export default function Home() {
 
   updateClock();
 
-  const interval = setInterval(updateClock, 1000);
+  const clockInterval =
+    setInterval(updateClock, 1000);
 
-  return () => {
-  clearInterval(interval);
-  observer.disconnect();
-};
+  // =========================
+  // TYPEWRITER
+  // =========================
 
-  // Scroll Reveal
+ const phrases = [
+  "Securing The Web",
+  "Sending Awareness",
+  "Stopping Frauds",
+  "Protecting Privacy",
+  "Maintaining Confidentiality",
+  "Ensuring Integrity",
+  "Guaranteeing Availability",
+  "Secured & Encrypted",
+  "Identity Authentication",
+  "Access Authorization",
+  "Threat Detection Active",
+  "Monitoring Attack Surface",
+];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-const observer = new IntersectionObserver(
-  (entries) => {
+  const typeEffect = () => {
 
-    entries.forEach((entry) => {
+    const current =
+      phrases[phraseIndex];
 
-      if (entry.isIntersecting) {
-        entry.target.classList.add("reveal-visible");
+    if (!isDeleting) {
+
+      setTypedText(
+        current.substring(0, charIndex + 1)
+      );
+
+      charIndex++;
+
+      if (charIndex === current.length) {
+
+        isDeleting = true;
+
+        setTimeout(typeEffect, 1400);
+
+        return;
+      }
+
+    } else {
+
+      setTypedText(
+        current.substring(0, charIndex - 1)
+      );
+
+      charIndex--;
+
+      if (charIndex === 0) {
+
+        isDeleting = false;
+
+        phraseIndex =
+          (phraseIndex + 1) %
+          phrases.length;
+      }
+
+    }
+
+    setTimeout(
+      typeEffect,
+      isDeleting ? 45 : 90
+    );
+
+  };
+
+  typeEffect();
+
+  // =========================
+  // SCROLL REVEAL
+  // =========================
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+  const revealOnScroll = () => {
+
+    revealElements.forEach((el) => {
+
+      const windowHeight =
+        window.innerHeight;
+
+      const elementTop =
+        el.getBoundingClientRect().top;
+
+      const revealPoint = 120;
+
+      if (
+        elementTop <
+        windowHeight - revealPoint
+      ) {
+        el.classList.add(
+          "reveal-visible"
+        );
       }
 
     });
 
-  },
-  {
-    threshold: 0.08,
-  }
-);
+  };
 
-document.querySelectorAll(".reveal").forEach((el) => {
-  observer.observe(el);
-});
+  revealOnScroll();
+
+  window.addEventListener(
+    "scroll",
+    revealOnScroll
+  );
+
+  return () => {
+
+    clearInterval(clockInterval);
+
+    window.removeEventListener(
+      "scroll",
+      revealOnScroll
+    );
+
+  };
 
 }, []);
+
+  // Scroll Reveal
+
+
 
   return (
     <main className="bg-[#050505] text-[#e0e0e0] overflow-x-hidden">
@@ -178,12 +283,15 @@ document.querySelectorAll(".reveal").forEach((el) => {
       </div>
 
       {/* Tagline */}
-      <p className="mx-auto mt-4 max-w-2xl font-mono text-base leading-8 tracking-[0.05em] text-zinc-300 sm:text-lg md:text-2xl md:leading-10 lg:mx-0">
+      <p className="mx-auto mt-4 min-h-[40px] max-w-2xl font-mono text-base leading-8 tracking-[0.08em] text-zinc-300 sm:text-lg md:text-2xl md:leading-10 lg:mx-0">
 
-        Breaching The Noise,
-        Revealing The Data.
+  {typedText}
 
-      </p>
+  <span className="animate-pulse text-red-500">
+    |
+  </span>
+
+</p>
 
       {/* Buttons */}
       <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
@@ -210,7 +318,7 @@ document.querySelectorAll(".reveal").forEach((el) => {
         {[
           ["STATUS", "Available"],
           ["SPECIALTY", "OSINT / Pentest"],
-          ["LOCALE", "Kolkata, IN"],
+          ["LOC", "Kolkata, IN"],
         ].map(([label, value], i) => (
 
           <div
