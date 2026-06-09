@@ -187,6 +187,7 @@ export default function Home() {
           <a href="#projects" className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition">
             Projects
           </a>
+          
           <a href="#contact" className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition">
             Contact
           </a>
@@ -410,15 +411,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* LICENSES */}
+{/* CERTIFICATIONS */}
 <section
   id="licenses"
-  className="mx-auto max-w-6xl px-6 py-24 md:px-16 reveal"
+  className="reveal mx-auto max-w-6xl px-6 py-24 md:px-16"
 >
 
   <div className="mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
 
-    // LICENSES
+    // CERTIFICATIONS
 
     <div className="h-px flex-1 bg-[#1e1e1e]" />
 
@@ -426,61 +427,68 @@ export default function Home() {
 
   <h2 className="mb-12 text-5xl font-black uppercase text-white md:text-7xl">
 
-    CERTIFICATIONS
+    LICENSES & CERTIFICATIONS
 
   </h2>
 
-  <div className="grid gap-px border border-[#1e1e1e] bg-[#1e1e1e]">
+  <div className="grid gap-px border border-[#1e1e1e] bg-[#1e1e1e] md:grid-cols-2 lg:grid-cols-3">
 
     {[
       {
-        title: "Google Cybersecurity Professional Certificate",
-        issuer: "Google",
-        year: "2025",
+        id: "CERT-001",
+        title: "Ethical Hacker",
+        issuer: "Cisco Networking Academy",
+        year: "2026",
       },
 
       {
-        title: "Cisco Networking Essentials",
-        issuer: "Cisco",
-        year: "2025",
+        id: "CERT-002",
+        title: "Cybersecurity Basics",
+        issuer: "IBM",
+        year: "2026",
       },
 
       {
-        title: "TryHackMe Learning Paths",
-        issuer: "TryHackMe",
-        year: "Ongoing",
-      },
-
-      {
-        title: "Cyber Security Coursework",
-        issuer: "University",
-        year: "Current",
+        id: "CERT-003",
+        title: "Networking Basics",
+        issuer: "Cisco Networking Academy",
+        year: "2026",
       },
 
     ].map((cert, i) => (
 
       <div
         key={i}
-        className="bg-[#111111] p-8 transition hover:bg-[#151515]"
+        className="group bg-[#111111] p-8 transition duration-300 hover:bg-[#151515]"
       >
 
-        <div className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+        <div className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
 
-          CERT-{String(i + 1).padStart(3, "0")}
+          {cert.id}
 
         </div>
 
-        <h3 className="text-xl font-bold uppercase text-white">
+        <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
 
           {cert.title}
 
         </h3>
 
-        <p className="mt-3 font-mono text-sm text-zinc-500">
+        <p className="mt-4 font-mono text-sm leading-8 text-zinc-500">
 
-          {cert.issuer} • {cert.year}
+          {cert.issuer}
 
         </p>
+
+        <div className="mt-6 border-t border-[#1e1e1e] pt-4">
+
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-600">
+
+            Issued {cert.year}
+
+          </span>
+
+        </div>
 
       </div>
 
