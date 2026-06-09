@@ -410,6 +410,85 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* LICENSES */}
+<section
+  id="licenses"
+  className="mx-auto max-w-6xl px-6 py-24 md:px-16 reveal"
+>
+
+  <div className="mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+
+    // LICENSES
+
+    <div className="h-px flex-1 bg-[#1e1e1e]" />
+
+  </div>
+
+  <h2 className="mb-12 text-5xl font-black uppercase text-white md:text-7xl">
+
+    CERTIFICATIONS
+
+  </h2>
+
+  <div className="grid gap-px border border-[#1e1e1e] bg-[#1e1e1e]">
+
+    {[
+      {
+        title: "Google Cybersecurity Professional Certificate",
+        issuer: "Google",
+        year: "2025",
+      },
+
+      {
+        title: "Cisco Networking Essentials",
+        issuer: "Cisco",
+        year: "2025",
+      },
+
+      {
+        title: "TryHackMe Learning Paths",
+        issuer: "TryHackMe",
+        year: "Ongoing",
+      },
+
+      {
+        title: "Cyber Security Coursework",
+        issuer: "University",
+        year: "Current",
+      },
+
+    ].map((cert, i) => (
+
+      <div
+        key={i}
+        className="bg-[#111111] p-8 transition hover:bg-[#151515]"
+      >
+
+        <div className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-red-500">
+
+          CERT-{String(i + 1).padStart(3, "0")}
+
+        </div>
+
+        <h3 className="text-xl font-bold uppercase text-white">
+
+          {cert.title}
+
+        </h3>
+
+        <p className="mt-3 font-mono text-sm text-zinc-500">
+
+          {cert.issuer} • {cert.year}
+
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
 
       {/* PROJECTS */}
 <section id="projects" className="mx-auto max-w-7xl px-6 py-24 md:px-16">
